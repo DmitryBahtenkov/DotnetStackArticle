@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStack.TodoApi", "DotnetStack.TodoApi\DotnetStack.TodoApi.csproj", "{26A1A79E-20B9-480D-A4E9-D63FE4CD882B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStack.UI", "DotnetStack.UI\DotnetStack.UI.csproj", "{AED690F9-A289-4B2E-BE60-3DDB73D83F80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8826A8DF-4D11-449E-8B21-DE0284569277}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26A1A79E-20B9-480D-A4E9-D63FE4CD882B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26A1A79E-20B9-480D-A4E9-D63FE4CD882B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26A1A79E-20B9-480D-A4E9-D63FE4CD882B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26A1A79E-20B9-480D-A4E9-D63FE4CD882B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED690F9-A289-4B2E-BE60-3DDB73D83F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED690F9-A289-4B2E-BE60-3DDB73D83F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED690F9-A289-4B2E-BE60-3DDB73D83F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED690F9-A289-4B2E-BE60-3DDB73D83F80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+﻿services:
+  dotnetstack.ui:
+    image: dotnetstack.ui
+    build:
+      context: .
+      dockerfile: DotnetStack.UI/Dockerfile

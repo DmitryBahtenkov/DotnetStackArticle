@@ -1,0 +1,82 @@
+@page "/todolist"
+@using DotnetStack.UI.Models
+@inject ToDoService ToDoService
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<h3>ToDo List</h3>
+
+@if (toDoItems == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (toDoItems == null)
+        {
+            <tr>
+                <td colspan="4" class="text-center">Loading...</td>
+            </tr>
+        }
+        else if (toDoItems.Count == 0)
+        {
+            <tr>
+                <td colspan="4" class="text-center">No tasks available.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in toDoItems)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Deadline.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" @onclick="() => EditItem(item.Id)">Edit</button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteItem(item.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <button class="btn btn-info" @onclick="CreateNewItem">Create</button>
+}
+
+@code {
+    private List<ToDoItem> toDoItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        toDoItems = await ToDoService.GetToDoItemsAsync();
+    }
+
+    private void CreateNewItem()
+    {
+        // Redirect to create new item page
+        NavigationManager.NavigateTo("/createitem");
+    }
+
+    private void EditItem(string id)
+    {
+        // Redirect to edit item page
+        NavigationManager.NavigateTo($"/edititem/{id}");
+    }
+
+    private async Task DeleteItem(string id)
+    {
+        await ToDoService.DeleteToDoItemAsync(id);
+        toDoItems = await ToDoService.GetToDoItemsAsync();
+    }
+}

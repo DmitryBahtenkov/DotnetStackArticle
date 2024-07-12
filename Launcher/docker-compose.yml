@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  ravendb:
+    image: ravendb/ravendb:6.0.104-ubuntu.22.04-arm64v8
+    environment:
+      RAVEN_DB_URL: "http://0.0.0.0:8080"
+      RAVEN_DB_PUBLIC_URL: "http://ravendb:8080"
+      RAVEN_DB_TCP_URL: "tcp://0.0.0.0:38888"
+    ports:
+      - "8080:8080"
+
+  garnet:
+    image: 'ghcr.io/microsoft/garnet'
+    ulimits:
+      memlock: -1
+    ports:
+      - "6379:6379"
+    volumes:
+      - garnetdata:/data
+
+volumes:
+  ravendb_data:
+  garnetdata:

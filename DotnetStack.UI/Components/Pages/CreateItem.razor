@@ -1,0 +1,36 @@
+@page "/createitem"
+@using DotnetStack.UI.Models
+@inject ToDoService ToDoService
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+<h3>Create New Task</h3>
+
+<EditForm EditContext="@editContext" Model="newItem" FormName="Create New Task" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="title">Title: </label>
+        <InputText id="title" class="form-control" @bind-Value="newItem.Title" />
+    </div>
+    <div>
+        <label for="description">Description: </label>
+        <InputText id="description" class="form-control" @bind-Value="newItem.Description" />
+    </div>
+    <div>
+        <label for="deadline">Deadline: </label>
+        <InputDate  id="deadline" class="form-control" @bind-Value="newItem.Deadline" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
+
+@code {
+    private ToDoItem newItem = new ToDoItem();
+    private EditContext editContext;
+
+private async Task HandleValidSubmit()
+{
+    await ToDoService.CreateToDoItemAsync(newItem);
+    NavigationManager.NavigateTo("/todolist");
+}
+}

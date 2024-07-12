@@ -1,0 +1,6 @@
+@DotnetStack.TodoApi_HostAddress = http://localhost:5042
+
+GET {{DotnetStack.TodoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
